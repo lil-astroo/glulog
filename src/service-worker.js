@@ -91,5 +91,5 @@ self.addEventListener('install', () => {
 });
 
 self.addEventListener('activate', () => {
-  clients.claim();
+  self.clients.claim();
 });
