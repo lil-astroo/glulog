@@ -9,7 +9,7 @@ const isLocalhost = Boolean(
     )
 );
 
-export function register() {
+export default function register() {
     if ('serviceWorker' in navigator) {
         const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
@@ -50,7 +50,7 @@ function checkValidServiceWorker(swUrl) {
         });
 }
 
-export function unregister() {
+export default function unregister() {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.ready.then(registration => {
             registration.unregister();
