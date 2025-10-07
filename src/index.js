@@ -6,7 +6,7 @@ import 'animate.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter basename='/GluLog'>
+  <BrowserRouter basename='/glulog'>
     <App />
   </BrowserRouter>
 );
