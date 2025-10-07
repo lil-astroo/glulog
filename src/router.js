@@ -5,10 +5,10 @@ import Records from './pages/Records';
 
 let routes = [
     { path: '/login', element: <Login /> },
-    { path: '/home', element: <Home /> },
+    { path: '/', element: <Home /> },
     { path: '/records', element: <Records /> },
-    { path: '/', element: <Navigate to="/home" /> },
-    { path: '*', element: <Navigate to="/home" /> }
+    { path: '/', element: <Navigate to="/" /> },
+    { path: '*', element: <Navigate to="/" /> }
 ]
 
 export default routes;
