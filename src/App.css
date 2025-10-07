@@ -1,0 +1,62 @@
+body {
+    background: var(--bg);
+    overflow: hidden;
+}
+
+.container {
+    padding: 20px;
+}
+
+.home,
+.records {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.standalone-warning {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100dvh;
+    text-align: center;
+    margin-top: 100px;
+    padding: 50px;
+    color: var(--text);
+    font-family: 'IranSans';
+}
+
+.standalone-warning__logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
+.standalone-warning__title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.standalone-warning__box {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: end;
+}
+
+.standalone-warning__icon {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    color: var(--text);
+}
+
+.standalone-warning__text {
+    text-align: right;
+    margin-right: 10px;
+    line-height: 1.5;
+}

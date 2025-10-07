@@ -1,0 +1,70 @@
+@import url(reset.css);
+
+@font-face {
+  font-family: 'IranSans';
+  src: url(assets/fonts/IrSans.ttf);
+}
+
+* {
+  user-select: none;
+}
+
+*::placeholder {
+  color: var(--text-muted);
+}
+
+*:disabled {
+  opacity: 0.6;
+  background-color: #d1d1d1 !important;
+  cursor: not-allowed;
+}
+
+.Toastify__toast-container * {
+  font-family: 'IranSans';
+}
+
+:root {
+  --bg-dark: hsl(212 50% 1%);
+  --bg: hsl(207, 31%, 7%);
+  --bg-light: hsl(208 18% 9%);
+  --text: hsl(208 97% 95%);
+  --text-muted: hsl(208 14% 70%);
+  --highlight: hsl(208 10% 39%);
+  --border: hsl(208 13% 28%);
+  --border-muted: hsl(207 19% 18%);
+  --primary: hsl(207 76% 70%);
+  --secondary: hsl(29 63% 65%);
+  --danger: hsl(9 26% 64%);
+  --warning: hsl(52 19% 57%);
+  --success: hsl(146 17% 59%);
+  --info: hsl(217 28% 65%);
+
+  --shadow-s: inset 0 1px 2px #ffffff30,
+    0 1px 2px #00000030,
+    0 2px 4px #00000015;
+  --shadow-m:
+    inset 0 1px 2px #ffffff50,
+    0 2px 4px #00000030,
+    0 4px 8px #00000015;
+  --shadow-l:
+    inset 0 1px 2px #ffffff70,
+    0 4px 6px #00000030,
+    0 6px 10px #00000015;
+}
+
+body.light {
+  --bg-dark: hsl(208 22% 90%);
+  --bg: hsl(208 46% 95%);
+  --bg-light: hsl(208 100% 100%);
+  --text: hsl(209 61% 5%);
+  --text-muted: hsl(208 13% 28%);
+  --highlight: hsl(208 100% 100%);
+  --border: hsl(208 8% 51%);
+  --border-muted: hsl(208 11% 62%);
+  --primary: hsl(202 100% 23%);
+  --secondary: hsl(35 100% 18%);
+  --danger: hsl(9 21% 41%);
+  --warning: hsl(52 23% 34%);
+  --success: hsl(147 19% 36%);
+  --info: hsl(217 22% 41%);
+}

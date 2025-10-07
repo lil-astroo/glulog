@@ -1,0 +1,146 @@
+.login__form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 400px;
+    height: 700px;
+    background-color: var(--bg-dark);
+    box-shadow: var(--shadow-l);
+    border-radius: 15px;
+}
+
+.login__form__header {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: var(--text);
+    font-family: 'Iransans';
+    text-align: center;
+    margin-top: 30px;
+}
+
+.login__form__header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.login__form__body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 20px;
+    width: 80%;
+    direction: rtl;
+}
+
+.login__form__body__input {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: "iranSans";
+}
+
+.login__form__body__input input {
+    margin-top: 6px;
+    padding: 0.6rem 0.8rem;
+    background: var(--bg-dark) !important;
+    box-shadow: var(--shadow-m) !important;
+    color: var(--text);
+    font-family: "iranSans";
+    font-size: 0.95rem;
+    height: 40px;
+    width: auto;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+}
+
+.login__form__body__icon {
+    position: absolute;
+    left: 0.8rem;
+    top: 37%;
+    color: var(--text-light);
+    pointer-events: none;
+    font-size: 1.1rem;
+    z-index: 1000;
+}
+
+.login__form__body__remember {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "iranSans";
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.login__form__body__remember input {
+  appearance: none;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  background-color: var(--bg-dark);
+  border-radius: 4px;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+  box-shadow: var(--shadow-l);
+  position: relative;
+}
+
+.login__form__body__remember input:checked {
+  background-color: var(--primary);
+}
+
+.login__form__body__remember input:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -58%);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.login__form__body__remember label {
+  cursor: pointer;
+  font-family: 'IranSans';
+  font-size: 14px;
+  color: var(--text);
+  margin-right: 6px;
+}
+
+.login__form__body__btn {
+    background: var(--bg-dark);
+    box-shadow: var(--shadow-m);
+    color: var(--text);
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+    font-family: "iranSans";
+    width: 100%;
+    cursor: pointer;
+}
+
+.login__form__footer {
+    margin-top: 20px;
+    font-family: "iranSans";
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.login__form__footer p {
+    color: var(--primary);
+    text-decoration: none;
+    margin-left: 5px;
+}

@@ -1,0 +1,98 @@
+.widgetLg__container {
+    width: 650px;
+    height: 300px;
+    border-radius: 20px;
+    background: var(--bg-dark);
+    box-shadow: var(--shadow-m);
+    color: var(--text);
+}
+
+.widget__container {
+    padding: 20px;
+    height: 100%;
+}
+
+.widget__header {
+    font-size: 1.2rem;
+    font-weight: 300;
+    font-family: "Iransans";
+    text-align: right;
+}
+
+.widget__body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.lastsubmit__icon {
+    width: 64px;
+    height: 64px;
+}
+
+.lastsubmit__info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 20px;
+    font-family: "Iransans";
+}
+
+.lastsubmit__value {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.lastsubmit__time {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-mute);
+}
+
+.high {
+    color: var(--warning) !important;
+}
+.normal {
+    color: var(--success) !important;
+}
+.low {
+    color: var(--danger) !important;
+}
+
+.widget__body .graph {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* از وسط -> به چپ */
+}
+
+.add-entry-button {
+    background: var(--bg-dark);
+    color: var(--text);
+    box-shadow: var(--shadow-m);
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    height: 80px;
+    font-size: 1.1rem;
+    font-family: "Iransans";
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+@media screen and (max-width : 480px) {
+    .widgetLg__container {
+        height: 150px;
+    }
+    .widgetLg__container:nth-child(4) {
+        height: 230px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
