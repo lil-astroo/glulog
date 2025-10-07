@@ -13,7 +13,7 @@ export default function Navbar() {
     return (
         <nav>
             <div className="nav__icon">
-                <img src="/logo.png" alt="" />
+                <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="" />
             </div>
             <div className="nav__body">
                 <Link to='/home' className="item item--active animate__animated animate__fadeInUp">

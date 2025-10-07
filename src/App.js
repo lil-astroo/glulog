@@ -37,7 +37,7 @@ export default function App() {
   if (!isStandalone) {
     return (
       <div className='standalone-warning'>
-        <img src="/logo.png" className='standalone-warning__logo' alt="" />
+        <img src={`${process.env.PUBLIC_URL}/logo.png`} className='standalone-warning__logo' alt="" />
         <h1 className='standalone-warning__title'>وب اپلیکیشن را دانلود کنید</h1>
         <div className='standalone-warning__details'>
           <div className='standalone-warning__box'>
