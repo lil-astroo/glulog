@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useRoutes } from 'react-router-dom'
 import { ToastContainer, Bounce, toast } from 'react-toastify';
 import { Share, Smartphone, SquarePlus } from 'lucide-react';
-import OneSignal from 'react-onesignal';
+import useOneSignal from './hooks/useOneSignal';
 import Cookies from 'js-cookie';
 import Navbar from './components/Navbar';
 import routes from './router';
@@ -35,12 +35,6 @@ export default function App() {
     }
 
     toast.warning('اپلیکیشن در حال توسعه است! ممکن است باگ هایی را تجربه کنید');
-
-    OneSignal.init({
-      appId: "ec5b905f-0206-47b3-b852-4878364dcc63",
-      allowLocalhostAsSecureOrigin: true,
-      notifyButton: { enable: true },
-    });
 
   }, [location, navigate]);
 
@@ -76,7 +70,7 @@ export default function App() {
   //   );
   // }
 
-
+  useOneSignal();
 
   return (
     <div className='container'>
