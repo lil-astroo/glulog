@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useRoutes } from 'react-router-dom'
-import { ToastContainer, Bounce } from 'react-toastify';
+import { ToastContainer, Bounce, toast } from 'react-toastify';
 import { Share, Smartphone, SquarePlus } from 'lucide-react';
 import OneSignal from 'react-onesignal';
 import Cookies from 'js-cookie';
@@ -33,6 +33,8 @@ export default function App() {
     if (userAuth && loginPage) {
       navigate('/dashboard');
     }
+
+    toast.warning('اپلیکیشن در حال توسعه است! ممکن است باگ هایی را تجربه کنید');
 
     OneSignal.init({
       appId: "ec5b905f-0206-47b3-b852-4878364dcc63",
