@@ -38,9 +38,8 @@ export default function App() {
 
     OneSignal.init({
       appId: "ec5b905f-0206-47b3-b852-4878364dcc63",
-      notifyButton: {
-        enable: true,
-      },
+      allowLocalhostAsSecureOrigin: true,
+      notifyButton: { enable: true },
     });
 
   }, [location, navigate]);
