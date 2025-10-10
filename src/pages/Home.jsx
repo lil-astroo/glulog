@@ -193,7 +193,7 @@ export default function Home() {
                             )}
                         </div>
                     </SwiperSlide>
-                    <SwiperSlide>
+                    {/* <SwiperSlide>
                         <div className="chart nested">
                             {data && data.length > 0 ? (
                                 <Nested {...nestedConfig} />
@@ -201,7 +201,7 @@ export default function Home() {
                                 <div className="no-data">هیچ داده‌ای برای نمایش وجود ندارد</div>
                             )}
                         </div>
-                    </SwiperSlide>
+                    </SwiperSlide> */}
                 </Swiper>
             </WidgetMd>
 
