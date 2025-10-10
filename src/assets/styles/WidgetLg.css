@@ -49,6 +49,9 @@
     font-size: 14px;
     font-weight: 300;
     color: var(--text-mute);
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .high {

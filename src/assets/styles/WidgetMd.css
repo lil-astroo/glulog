@@ -9,9 +9,21 @@
   box-shadow: var(--shadow-m);
 }
 
+.mySwiper {
+  width: 390px;
+  height: 150px;
+  position: absolute;
+}
+
 .chart {
   width: 250px;
   height: 150px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+.chart.nested {
+  width: 150px;
 }
 
 .chart * text {

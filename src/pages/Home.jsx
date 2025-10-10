@@ -3,9 +3,10 @@ import WidgetMd from "../components/WidgetMd";
 import WidgetLg from "../components/WidgetLg";
 import Modal from "../components/Modal";
 import Loading from "../components/Loading";
-import { Heat } from "@alptugidin/react-circular-progress-bar";
+import { Heat, Nested } from "@alptugidin/react-circular-progress-bar";
 import { toast } from "react-toastify";
-import { FilePlus2, HeartPulse } from "lucide-react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import {
     LineChart,
     Line,
@@ -14,6 +15,10 @@ import {
     Tooltip,
     ResponsiveContainer,
 } from "recharts";
+import { FilePlus2, HeartPulse, Syringe } from "lucide-react";
+
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 //تنظیمات Tooltip نمودار
 const tooltipStyle = {
@@ -87,8 +92,6 @@ export default function Home() {
         const today = new Date();
         const weeklyData = [];
 
-        console.log("📅 امروز:", today.toISOString());
-
         for (let i = 6; i >= 0; i--) {
             const day = new Date(today);
             day.setDate(today.getDate() - i);
@@ -97,8 +100,6 @@ export default function Home() {
 
             // ساخت رشته تاریخ به صورت YYYY-MM-DD با زمان محلی
             const dayStr = `${day.getFullYear()}-${(day.getMonth() + 1).toString().padStart(2, '0')}-${day.getDate().toString().padStart(2, '0')}`;
-
-            console.log("🔹 بررسی روز:", dayName, "-", dayStr);
 
             // فیلتر رکوردهای مربوط به اون روز
             const dayEntries = data.filter(entry => {
@@ -112,12 +113,6 @@ export default function Home() {
 
                 const match = entryDayStr === dayStr;
 
-                if (match) {
-                    console.log(`✅ رکورد مطابق با ${dayName}:`, entry.glucoseLevel, entryDayStr);
-                } else {
-                    console.log(`❌ رکورد ${entryDayStr} != ${dayStr}`);
-                }
-
                 return match;
             });
 
@@ -125,12 +120,9 @@ export default function Home() {
                 ? Math.round(dayEntries.reduce((sum, entry) => sum + Number(entry.glucoseLevel || 0), 0) / dayEntries.length)
                 : 0;
 
-            console.log(`📊 میانگین ${dayName}:`, avgGlucose, "از", dayEntries.length, "رکورد");
-
             weeklyData.push({ day: dayName, glucose: avgGlucose });
         }
 
-        console.log("📈 نتیجه نهایی weeklyData:", weeklyData);
         return weeklyData;
     };
 
@@ -151,8 +143,27 @@ export default function Home() {
             loadingTime: 1000,
             strokeLinecap: "round",
             valueAnimation: true,
-            intersectionEnabled: true,
+            intersectionEnabled: false,
         },
+    };
+
+    const nestedConfig = {
+        circles: [
+            { text: 'Javascript', value: 20, color: '#fde047' },
+            { text: 'Typescript', value: 50, color: '#0ea5e9' },
+            { text: 'HTML', value: 8, color: '#c2410c' },
+            { text: 'CSS', value: 12, color: '#7c3aed' },
+            { text: 'SASS', value: 10, color: '#c026d3' }
+        ],
+        sx: {
+            bgColor: '#cbd5e1',
+            fontWeight: 'bold',
+            fontFamily: 'Trebuchet MS',
+            strokeLinecap: 'round',
+            loadingTime: 1000,
+            valueAnimation: true,
+            intersectionEnabled: true
+        }
     };
 
     const handleModalClose = () => setIsModalOpen(false);
@@ -168,13 +179,30 @@ export default function Home() {
     return (
         <div className="home">
             <WidgetMd>
-                <div className="chart">
-                    {data && data.length > 0 ? (
-                        <Heat {...heatConfig} />
-                    ) : (
-                        <div className="no-data">هیچ داده‌ای برای نمایش وجود ندارد</div>
-                    )}
-                </div>
+                <Swiper
+                    navigation
+                    modules={[Navigation]}
+                    className="mySwiper"
+                >
+                    <SwiperSlide>
+                        <div className="chart">
+                            {data && data.length > 0 ? (
+                                <Heat {...heatConfig} />
+                            ) : (
+                                <div className="no-data">هیچ داده‌ای برای نمایش وجود ندارد</div>
+                            )}
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="chart nested">
+                            {data && data.length > 0 ? (
+                                <Nested {...nestedConfig} />
+                            ) : (
+                                <div className="no-data">هیچ داده‌ای برای نمایش وجود ندارد</div>
+                            )}
+                        </div>
+                    </SwiperSlide>
+                </Swiper>
             </WidgetMd>
 
             <WidgetLg>
@@ -186,11 +214,17 @@ export default function Home() {
                         <HeartPulse className="lastsubmit__icon animate__animated animate__heartBeat" />
                         <div className="lastsubmit__info">
                             <span className={`lastsubmit__value ${lastRecordRange}`}>{lastRecord?.glucoseLevel || 0} mg/dl</span>
-                            <span className={`lastsubmit__time`}>
+                            <span className='lastsubmit__time'>
                                 در&nbsp;
                                 {lastRecord?.date}&nbsp;
                                 &nbsp;
                                 {lastRecord?.time || '--:--'}
+                            </span>
+                            <br />
+                            <span className='lastsubmit__time' dir="rtl">
+                                <Syringe width={16} height={16} />
+                                {lastRecord?.insulinUnits || '--'}
+                                <span style={{ fontSize: '12px' }}>واحد</span>
                             </span>
                         </div>
                     </div>
