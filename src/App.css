@@ -5,6 +5,10 @@ body {
 
 .container {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100dvh;
 }
 
 .home,

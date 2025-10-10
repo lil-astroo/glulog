@@ -1,9 +1,5 @@
 nav {
-    position: fixed;
-    bottom: 5%;
-    left: 50%;
     border-radius: 30px;
-    transform: translateX(-50%);
     width: 50%;
     height: 100px;
     background: var(--bg-dark);
@@ -13,6 +9,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    align-self: center;
 }
 
 .nav__icon {

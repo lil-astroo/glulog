@@ -78,31 +78,59 @@ export default function Home() {
     const lastRecordRange = lastRecord ? (lastRecord.glucoseLevel < 80 ? 'low' : lastRecord.glucoseLevel > 180 ? 'high' : 'normal') : null;
 
     const getWeeklyData = () => {
-        if (!data || data.length === 0) return [];
+        if (!data || data.length === 0) {
+            console.warn("⚠️ هیچ دیتایی وجود نداره!");
+            return [];
+        }
 
         const daysOfWeek = ["یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"];
         const today = new Date();
         const weeklyData = [];
 
+        console.log("📅 امروز:", today.toISOString());
+
         for (let i = 6; i >= 0; i--) {
             const day = new Date(today);
             day.setDate(today.getDate() - i);
-            const dayName = daysOfWeek[day.getDay()];
-            const dayStr = day.toISOString().split('T')[0];
 
+            const dayName = daysOfWeek[day.getDay()];
+
+            // ساخت رشته تاریخ به صورت YYYY-MM-DD با زمان محلی
+            const dayStr = `${day.getFullYear()}-${(day.getMonth() + 1).toString().padStart(2, '0')}-${day.getDate().toString().padStart(2, '0')}`;
+
+            console.log("🔹 بررسی روز:", dayName, "-", dayStr);
+
+            // فیلتر رکوردهای مربوط به اون روز
             const dayEntries = data.filter(entry => {
-                if (!entry.created) return false;
-                const entryDate = new Date(entry.created).toISOString().split('T')[0];
-                return entryDate === dayStr;
+                if (!entry.created) {
+                    console.warn("🚫 رکورد بدون created:", entry);
+                    return false;
+                }
+
+                const entryDateObj = new Date(entry.created);
+                const entryDayStr = `${entryDateObj.getFullYear()}-${(entryDateObj.getMonth() + 1).toString().padStart(2, '0')}-${entryDateObj.getDate().toString().padStart(2, '0')}`;
+
+                const match = entryDayStr === dayStr;
+
+                if (match) {
+                    console.log(`✅ رکورد مطابق با ${dayName}:`, entry.glucoseLevel, entryDayStr);
+                } else {
+                    console.log(`❌ رکورد ${entryDayStr} != ${dayStr}`);
+                }
+
+                return match;
             });
 
             const avgGlucose = dayEntries.length > 0
                 ? Math.round(dayEntries.reduce((sum, entry) => sum + Number(entry.glucoseLevel || 0), 0) / dayEntries.length)
                 : 0;
 
+            console.log(`📊 میانگین ${dayName}:`, avgGlucose, "از", dayEntries.length, "رکورد");
+
             weeklyData.push({ day: dayName, glucose: avgGlucose });
         }
 
+        console.log("📈 نتیجه نهایی weeklyData:", weeklyData);
         return weeklyData;
     };
 
@@ -111,12 +139,12 @@ export default function Home() {
         progress: getAvgGlucose(),
         range: { from: 0, to: 600 },
         sign: { value: " mg/dl", position: "end" },
-        text: "میانگین",
+        text: "میانگین قند خون",
         sx: {
             barWidth: 5,
             bgColor: "#dadada",
             shape: "half",
-            valueSize: 12,
+            valueSize: 10,
             textSize: 8,
             valueFamily: "IranSans",
             textFamily: "IranSans",
@@ -158,7 +186,12 @@ export default function Home() {
                         <HeartPulse className="lastsubmit__icon animate__animated animate__heartBeat" />
                         <div className="lastsubmit__info">
                             <span className={`lastsubmit__value ${lastRecordRange}`}>{lastRecord?.glucoseLevel || 0} mg/dl</span>
-                            <span className={`lastsubmit__time`}>{lastRecord?.time || '--:--'} ساعت</span>
+                            <span className={`lastsubmit__time`}>
+                                در&nbsp;
+                                {lastRecord?.date}&nbsp;
+                                &nbsp;
+                                {lastRecord?.time || '--:--'}
+                            </span>
                         </div>
                     </div>
                 </div>
