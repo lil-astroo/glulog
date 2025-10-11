@@ -21,7 +21,7 @@ export default function Records() {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const response = await fetch('https://api.backendless.com/F709728E-F527-4D4C-B3DA-C415F4581F77/D270E61A-C6A4-4589-88B4-4AF48BF29ABB/data/glucoseData?sortBy=created%20desc');
+            const response = await fetch('https://api.backendless.com/F709728E-F527-4D4C-B3DA-C415F4581F77/D270E61A-C6A4-4589-88B4-4AF48BF29ABB/data/glucoseData?pageSize=100&sortBy=created%20desc');
 
             const data = await response.json();
             setLoading(false);

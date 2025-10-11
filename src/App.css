@@ -1,6 +1,7 @@
 body {
     background: var(--bg);
     overflow: hidden;
+    height: 100dvh;
 }
 
 .container {
@@ -9,6 +10,7 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     height: 100dvh;
+    overflow: hidden;
 }
 
 .home,
