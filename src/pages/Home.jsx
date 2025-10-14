@@ -220,9 +220,9 @@ export default function Home() {
                         <div className="lastsubmit__info">
                             <span className={`lastsubmit__value ${lastRecordRange}`}>{lastRecord?.glucoseLevel || 0} mg/dl</span>
                             <span className='lastsubmit__time'>
-                                {englishToPersianNumber(lastRecord?.time) || '--:--'}
-                                &nbsp;
                                 {lastRecord?.date}
+                                &nbsp;
+                                {englishToPersianNumber(lastRecord?.time) || '--:--'}
                                 <Clock width={16} height={16} />
                             </span>
                             <br />
