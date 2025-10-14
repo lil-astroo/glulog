@@ -15,7 +15,7 @@ import {
     Tooltip,
     ResponsiveContainer,
 } from "recharts";
-import { FilePlus2, HeartPulse, Syringe } from "lucide-react";
+import { Clock, FilePlus2, HeartPulse, Syringe } from "lucide-react";
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -166,6 +166,11 @@ export default function Home() {
         }
     };
 
+    function englishToPersianNumber(num) {
+        const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        return num.toString().replace(/\d/g, (digit) => persianNumbers[digit]);
+    }
+
     const handleModalClose = () => setIsModalOpen(false);
 
     if (loading) {
@@ -215,15 +220,15 @@ export default function Home() {
                         <div className="lastsubmit__info">
                             <span className={`lastsubmit__value ${lastRecordRange}`}>{lastRecord?.glucoseLevel || 0} mg/dl</span>
                             <span className='lastsubmit__time'>
-                                در&nbsp;
-                                {lastRecord?.date}&nbsp;
+                                {englishToPersianNumber(lastRecord?.time) || '--:--'}
                                 &nbsp;
-                                {lastRecord?.time || '--:--'}
+                                {lastRecord?.date}
+                                <Clock width={16} height={16} />
                             </span>
                             <br />
                             <span className='lastsubmit__time' dir="rtl">
                                 <Syringe width={16} height={16} />
-                                {lastRecord?.insulinUnits || '--'}
+                                {englishToPersianNumber(lastRecord?.insulinUnits) || '--'}
                                 <span style={{ fontSize: '12px' }}>واحد</span>
                             </span>
                         </div>
@@ -232,7 +237,7 @@ export default function Home() {
             </WidgetLg>
 
             <button className="add-entry-button" onClick={() => setIsModalOpen(true)}>
-                <FilePlus2 />
+                <FilePlus2 width={20} height={20} />
                 ثبت قند خون جدید
             </button>
 

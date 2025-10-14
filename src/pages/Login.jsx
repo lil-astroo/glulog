@@ -48,9 +48,9 @@ export default function Login() {
                     Cookies.set('userAuth', true, { expires: 1 });
                 }
 
-                toast.dismiss(); // بستن toast قبلی
+                toast.dismiss();
                 toast.success("ورود با موفقیت انجام شد!");
-                window.location.href = "/records";
+                window.location.href = "/glulog";
             } else {
                 toast.dismiss();
                 toast.error("نام کاربری یا رمز عبور اشتباه است!");
@@ -68,7 +68,7 @@ export default function Login() {
     return (
         <form className='login__form' onSubmit={loginHandler}>
             <div className='login__form__header'>
-                <img src="/logo.png" alt="" />
+                <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="" />
                 <h1>خوش آمدید</h1>
             </div>
             <div className='login__form__body'>

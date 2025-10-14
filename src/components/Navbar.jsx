@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { BellRing, ClipboardPlus, House, Syringe } from 'lucide-react'
+import { toast } from 'react-toastify'
 
 import '../assets/styles/navbar.css'
-import { toast } from 'react-toastify'
 
 export default function Navbar() {
 
