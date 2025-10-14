@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/glulog/static/css/main.0001b131.css",
-    "main.js": "/glulog/static/js/main.1650b0da.js",
+    "main.css": "/glulog/static/css/main.7aca6c12.css",
+    "main.js": "/glulog/static/js/main.5d67bb08.js",
     "static/media/IrSans.ttf": "/glulog/static/media/IrSans.b405362106aecf6bb79b.ttf",
     "service-worker.js": "/glulog/service-worker.js",
     "index.html": "/glulog/index.html",
-    "main.0001b131.css.map": "/glulog/static/css/main.0001b131.css.map",
-    "main.1650b0da.js.map": "/glulog/static/js/main.1650b0da.js.map"
+    "main.7aca6c12.css.map": "/glulog/static/css/main.7aca6c12.css.map",
+    "main.5d67bb08.js.map": "/glulog/static/js/main.5d67bb08.js.map"
   },
   "entrypoints": [
-    "static/css/main.0001b131.css",
-    "static/js/main.1650b0da.js"
+    "static/css/main.7aca6c12.css",
+    "static/js/main.5d67bb08.js"
   ]
 }
