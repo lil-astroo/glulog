@@ -43,7 +43,7 @@ export default function Login() {
 
             if (user) {
                 if (loginData.rememberMe) {
-                    Cookies.set('userAuth', true, { expires: 7 });
+                    Cookies.set('userAuth', true, { expires: 30 });
                 } else {
                     Cookies.set('userAuth', true, { expires: 1 });
                 }

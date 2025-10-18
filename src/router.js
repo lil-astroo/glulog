@@ -7,7 +7,6 @@ let routes = [
     { path: '/login', element: <Login /> },
     { path: '/', element: <Home /> },
     { path: '/records', element: <Records /> },
-    { path: '/', element: <Navigate to="/" /> },
     { path: '*', element: <Navigate to="/" /> }
 ]
 

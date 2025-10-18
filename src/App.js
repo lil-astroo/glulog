@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useRoutes } from 'react-router-dom'
 import { ToastContainer, Bounce } from 'react-toastify';
 import { Share, Smartphone, SquarePlus } from 'lucide-react';
+import { requestPermission } from "./firebase";
 import Cookies from 'js-cookie';
 import Navbar from './components/Navbar';
 import routes from './router';
@@ -14,6 +15,10 @@ export default function App() {
     const location = useLocation();
     const navigate = useNavigate();
     const showNavbar = location.pathname !== '/login';
+
+    useEffect(() => {
+        requestPermission();
+    }, []);
 
     useEffect(() => {
 
