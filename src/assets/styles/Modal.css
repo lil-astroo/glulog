@@ -139,6 +139,14 @@ input[type="time"]:focus:before {
     color: var(--text);
 }
 
+.modal__button--today {
+    background: var(--bg-dark);
+    box-shadow: var(--shadow-m);
+    color: var(--text);
+    padding: 0.5rem 3rem;
+    font-size: 0.7rem;
+}
+
 /* delete modal styles */
 .modal__message {
     color: var(--text);

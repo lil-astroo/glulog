@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import DatePicker from 'react-multi-date-picker';
 import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
+import transition from "react-element-popper/animations/transition"
 import { toast } from 'react-toastify';
-import { Binary, CalendarDays, ClockIcon, Syringe } from 'lucide-react';
+import { Droplet, CalendarDays, ClockIcon, Syringe } from 'lucide-react';
 
 import "react-multi-date-picker/styles/backgrounds/bg-dark.css"
 import '../assets/styles/Modal.css';
@@ -11,12 +12,15 @@ import '../assets/styles/Modal.css';
 export default function Modal({ onClose, reload }) {
 
     const [loading, setLoading] = useState(false); // ← برای غیرفعال کردن دکمه
+    const [calendarValue, setCalendarValue] = useState(new Date());
     const [gloucoseData, setGlucoseLevel] = useState({
         date: '',
         time: '',
         glucoseLevel: '',
         insulinUnits: ''
     });
+
+    const datePickerRef = useRef();
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -81,6 +85,9 @@ export default function Modal({ onClose, reload }) {
                         <DatePicker
                             className='bg-dark'
                             inputClass='modal__input'
+                            animations={[transition()]}
+                            value={calendarValue}
+                            ref={datePickerRef}
                             calendar={persian}
                             locale={persian_fa}
                             arrow={false}
@@ -88,7 +95,19 @@ export default function Modal({ onClose, reload }) {
                             placeholder='۱۴۰۰/۱۱/۱۵'
                             required
                             onChange={(date) => setGlucoseLevel({ ...gloucoseData, date: date.format() })}
-                        />
+                        >
+                            <button
+                                className='modal__button modal__button--today'
+                                style={{ margin: "5px" }}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setCalendarValue(new Date());
+                                    datePickerRef.current.closeCalendar();
+                                }}
+                            >
+                                امروز
+                            </button>
+                        </DatePicker>
                         <CalendarDays className='modal__input__icon' />
                     </div>
                     <div className='modal__label'>
@@ -111,7 +130,7 @@ export default function Modal({ onClose, reload }) {
                             required
                             onChange={(e) => setGlucoseLevel({ ...gloucoseData, glucoseLevel: e.target.value })}
                         />
-                        <Binary className='modal__input__icon' />
+                        <Droplet className='modal__input__icon' />
                     </div>
                     <div className='modal__label'>
                         انسولین (واحد):

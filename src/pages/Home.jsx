@@ -134,7 +134,7 @@ export default function Home() {
         text: "میانگین قند خون",
         sx: {
             barWidth: 5,
-            bgColor: "#dadada",
+            bgColor: "transparent",
             shape: "half",
             valueSize: 10,
             textSize: 8,
